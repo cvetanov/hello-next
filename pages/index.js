@@ -1,19 +1,23 @@
-// This is the Link API
+import Layout from '../components/MyLayout';
 import Link from 'next/link';
-import { useState } from 'react';
 
-const Index = () => {
-  const [text, setText] = useState('');
+const PostLink = (props) => (
+  <li>
+    <Link href='/p/[id]' as={`/p/${props.id}`}>
+      <a>{props.id}</a>
+    </Link>
+  </li>
+);
+
+export default function Blog() {
   return (
-    <div>
-      <Link href='/about'>
-        <a title='About Page'>About Page</a>
-      </Link>
-      <p>Hello Next.js</p>
-      <span>{text}</span>
-      <input onChange={(e) => setText(e.target.value)} value={text} />
-    </div>
+    <Layout>
+      <h1>My Blog</h1>
+      <ul>
+        <PostLink id='hello-nextjs' />
+        <PostLink id='learn-nextjs' />
+        <PostLink id='deploy-nextjs' />
+      </ul>
+    </Layout>
   );
-};
-
-export default Index;
+}
