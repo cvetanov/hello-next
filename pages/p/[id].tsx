@@ -1,7 +1,9 @@
-import Layout from '../../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
+import { NextPage } from 'next';
+import Layout from '../../components/MyLayout';
+import { Show } from '../../util/types';
 
-const Post = (props) => (
+const Post: NextPage<{ show: Show }> = (props) => (
   <Layout>
     <h1>{props.show.name}</h1>
     <p>{props.show.summary.replace(/<[/]?[pb]>/g, '')}</p>

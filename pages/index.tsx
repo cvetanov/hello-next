@@ -1,8 +1,10 @@
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import { NextPage } from 'next';
+import { Show } from '../util/types';
 
-const Index = (props) => (
+const Index: NextPage<{ shows: Show[] }> = (props) => (
   <Layout>
     <h1>Batman TV Shows</h1>
     <ul>
@@ -23,7 +25,7 @@ Index.getInitialProps = async function() {
   const data = await res.json();
 
   return {
-    shows: data.map((entry) => entry.show),
+    shows: data.map((entry: any) => entry.show),
   };
 };
 
