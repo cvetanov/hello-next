@@ -17,6 +17,7 @@ const Index = (props) => (
   </Layout>
 );
 
+// Make sure the returned object from `getInitialProps` is a plain `Object` and not using `Date`, `Map` or `Set`
 Index.getInitialProps = async function() {
   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
   const data = await res.json();
